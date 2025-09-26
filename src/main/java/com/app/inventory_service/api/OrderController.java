@@ -37,7 +37,7 @@ public class OrderController {
     @GetMapping
     public List<OrderResponse> getAll() {
         return listOrders.execute().stream()
-                .map(o -> new OrderResponse(o.getId(), o.getProduct().getName(),
+                .map(o -> new  OrderResponse(o.getId(), o.getProduct().getName(),
                         o.getAmount(), o.getType(), o.getCreatedAt()))
                 .collect(Collectors.toList());
     }
@@ -45,13 +45,13 @@ public class OrderController {
     @Operation(summary = "Create an order")
     @PostMapping
     public void create(@RequestBody OrderRequest request) {
-        createOrder.execute(request.productId, request.amount, request.type);
+        createOrder.execute(request.productId(), request.amount(), request.type());
     }
 
     @Operation(summary = "Update an order")
     @PutMapping("/{id}")
     public void update(@PathVariable Long id, @RequestBody OrderRequest request) {
-        updateOrder.execute(id, request.productId, request.amount, request.type);
+        updateOrder.execute(id, request.productId(), request.amount(), request.type());
     }
 
     @Operation(summary = "Delete order")

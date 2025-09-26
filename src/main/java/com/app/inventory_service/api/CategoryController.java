@@ -41,13 +41,13 @@ public class CategoryController {
     @Operation(summary = "Create a category")
     @PostMapping
     public void create(@RequestBody CategoryRequest request) {
-        createCategory.execute(request.name);
+        createCategory.execute(request.name());
     }
 
     @Operation(summary = "Update a category")
     @PutMapping("/{id}")
     public void update(@PathVariable Long id, @RequestBody CategoryRequest request) {
-        updateCategory.execute(id, request.name);
+        updateCategory.execute(id, request.name());
     }
 
     @Operation(summary = "Delete category")

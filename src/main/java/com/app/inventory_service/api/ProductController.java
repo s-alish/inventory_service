@@ -44,13 +44,13 @@ public class ProductController {
     @Operation(summary = "Create a product")
     @PostMapping
     public void create(@RequestBody ProductRequest request) {
-        createProduct.execute(request.name, request.categoryId, request.quantity);
+        createProduct.execute(request.name(), request.categoryId(), request.quantity());
     }
 
     @Operation(summary = "Update a product")
     @PutMapping("/{id}")
     public void update(@PathVariable Long id, @RequestBody ProductRequest request) {
-        updateProduct.execute(id, request.quantity, request.name, request.categoryId);
+        updateProduct.execute(id, request.quantity(), request.name(), request.categoryId());
     }
 
     @Operation(summary = "Delete product")
