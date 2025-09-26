@@ -30,6 +30,10 @@ public class OrderEntity {
     public OrderEntity() {}
 
     public OrderEntity(Long id, int amount, OrderType type, ProductEntity product) {
+        this.id = id;
+        this.amount = amount;
+        this.type = type;
+        this.product = product;
     }
 
 }

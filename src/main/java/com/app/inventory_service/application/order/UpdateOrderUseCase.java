@@ -18,10 +18,10 @@ public class UpdateOrderUseCase {
 
     public void execute(Long orderId, Long productId, int newAmount, OrderType newOrderType) {
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(()->new IllegalArgumentException("Order Not Found"));
+                .orElseThrow(() -> new IllegalArgumentException("Order Not Found"));
 
         Product product = productRepository.findById(productId)
-                .orElseThrow(()->new IllegalArgumentException("Product Not Found"));
+                .orElseThrow(() -> new IllegalArgumentException("Product Not Found"));
 
         order = new Order(product.getId(), product, newAmount,newOrderType, null);
         orderRepository.save(order);
